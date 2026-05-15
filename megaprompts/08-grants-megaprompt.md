@@ -1,4 +1,4 @@
-# Mega Prompt: Consensus Grant Finder Skill
+# Mega Prompt: Grants — NIH Funding Intelligence Skill
 
 ## Role
 
@@ -6,7 +6,7 @@ You are a **Skill Architect** specializing in research-funding workflows. Genera
 
 ## Output Target
 
-Single file: `${SKILLS_DIR}/consensus-grant-finder/SKILL.md`
+Single file: `${SKILLS_DIR}/grants/SKILL.md`
 
 Word budget: 2,200–2,500 words. Hard ceiling: 2,800 (this skill is information-dense; some overrun is acceptable).
 
@@ -41,13 +41,83 @@ The generated skill must follow this structure:
 ```
 1. Overview + scope (NIH-only; non-NIH funders noted as out-of-scope)
 2. Agent Integrity Rules (execution discipline, sourcing, counts, errors, audit)
-3. Phase 1: Intake (research idea + 3 questions)
+3. Phase 1: Grill-Me Intake (6 forcing questions, one at a time)
 4. Phase 2A: Research Positioning (5 Consensus searches + synthesis)
 5. Phase 2B: Institute Mapping + Grant Discovery (RePORTER + NOSI + mechanisms)
 6. Phase 3: Generate DOCX (9 sections including Audit Log)
 7. Phase 4: Deliver (file + chat summary)
 8. Notes (rate limits, plan tiers, API patterns)
 ```
+
+## Grill-Me Intake Specification
+
+Six forcing questions, one at a time, dependency-ordered. Each carries "why I'm asking". Stop condition: max 6.
+
+### Q1 (root) — Research idea
+
+> **Describe the research idea in 2–3 sentences. What's the question, what's new, and what's the clinical relevance? Vague answers ("AI for healthcare", "biomarkers for disease X") will be rejected — push for specificity.**
+>
+> *Why I'm asking:* Five Consensus searches (established / stakes / current approaches / adjacent methods / gaps) depend on a precise research idea. Vague ideas produce vague gap quotes and useless positioning narrative.
+
+Refuse mush. Re-ask once with examples if user is too broad.
+
+### Q2 (depends on Q1) — Career stage
+
+> **Career stage — pick one:**
+> 1. Pre-doctoral (PhD student, T32 trainee)
+> 2. Postdoctoral fellow (F32, K99 candidate)
+> 3. Early career (K-award candidate, first R01)
+> 4. Independent investigator (multiple R01s, established lab)
+> 5. Senior PI (R35, P-series, U01 leadership)
+>
+> *Why I'm asking:* Career stage filters mechanism recommendations. F-series for trainees, K-series for early career, R-series for independent. Picking the wrong stage produces unfundable mechanism suggestions.
+
+Forcing choice.
+
+### Q3 (depends on Q2) — Preliminary data status
+
+> **Preliminary data — pick one:**
+> 1. None (de novo project, no pilot data yet)
+> 2. Pilot data (early findings, single-site)
+> 3. Strong preliminary (multi-experiment, ready for R01-scale)
+> 4. Validated and ready (multi-site, publication-ready)
+>
+> *Why I'm asking:* Prelim data status drives mechanism budget. No data → R03 / R21 pilot scope. Strong prelim → R01 / U01 multi-site scale. Mismatch produces uncompetitive applications.
+
+Forcing choice.
+
+### Q4 (depends on Q2) — Environment
+
+> **Research environment — pick one:**
+> 1. R01-eligible (research-intensive institution with NIH base funding)
+> 2. Mid-tier (regional academic medical center, modest NIH portfolio)
+> 3. Resource-constrained (smaller institution, minimal NIH base)
+> 4. Industry-collaborative (academic + industry partnership)
+>
+> *Why I'm asking:* Environment affects scope realism (multi-site U01 requires R01-eligible) and which mechanism categories are competitive (R15 specifically targets resource-constrained).
+
+Forcing choice.
+
+### Q5 (depends on Q1) — Submission posture
+
+> **Submission posture — pick one:**
+> 1. New application (first submission, no prior reviews)
+> 2. Resubmission (A1 with reviewer responses needed)
+> 3. Exploring (haven't decided yet whether to submit)
+>
+> *Why I'm asking:* Resubmissions need reviewer-response guidance in the DOCX (Section 7). New applications skip that. Exploring shifts emphasis to landscape over strategy.
+
+Forcing choice.
+
+### Q6 (depends on Q1) — Known institute targets
+
+> **Are you already considering specific NIH institutes? List names (NCI / NHLBI / NIMH / NINDS / NIDDK / etc.) or say "no preference — find the right ones".**
+>
+> *Why I'm asking:* If you have an institute hypothesis, I'll validate it against RePORTER data. If not, I'll surface the top-3 institutes funding adjacent work from the institute-tally.
+
+Accept "no preference" as the common case.
+
+**Stop condition:** After Q6, commit and start Phase 2A. Never re-open intake after Phase 2A begins.
 
 ## Critical Improvements Over Naive Implementation
 
@@ -145,8 +215,8 @@ This skill is **primarily Claude Code CLI**. Document at top:
 
 ```yaml
 ---
-name: consensus-grant-finder
-description: "NIH grant research skill for clinical researchers. Runs a 5-facet Consensus positioning analysis (with draft Significance/Innovation language), maps the research to the right NIH institutes and study sections via RePORTER, finds NOSIs and funded overlap, and produces an editable Word document (.docx) with budget/scope-aware mechanism recommendations, submission timelines, and a mandatory program officer recommendation. Triggers: 'find grants for my research idea', 'what grants match my research', 'help me find NIH funding', 'grant opportunities for my research', or any grant-related request. NIH-only scope — non-NIH funders (PCORI, DOD CDMRP, VA, foundations) are out of scope and flagged at intake."
+name: grants
+description: "NIH grant research skill for clinical researchers. Grill-me intake (research idea + career stage + preliminary data + environment + submission posture + known institute targets) locks down the funding strategy before any search runs. Runs a 5-facet Consensus positioning analysis (with draft Significance/Innovation language), maps the research to the right NIH institutes and study sections via RePORTER, finds NOSIs and funded overlap, and produces an editable Word document (.docx) with budget/scope-aware mechanism recommendations, submission timelines, and a mandatory program officer recommendation. Triggers: 'grants for [topic]', 'find grants for my research idea', 'what grants match my research', 'help me find NIH funding', 'grant opportunities for my research', or any grant-related request. NIH-only scope — non-NIH funders (PCORI, DOD CDMRP, VA, foundations) are out of scope and flagged at intake."
 ---
 ```
 
@@ -164,9 +234,13 @@ description: "NIH grant research skill for clinical researchers. Runs a 5-facet 
 
 ## Validation Checklist (Run Before Delivery)
 
-- [ ] Frontmatter parses as YAML
+- [ ] Frontmatter parses as YAML (name: grants)
+- [ ] Output target path uses `${SKILLS_DIR}/grants/SKILL.md`
 - [ ] Word count 2,200–2,800
 - [ ] Agent Integrity Rules block present at top
+- [ ] Grill-me intake: 6 questions, one-at-a-time, with "why I'm asking" per question
+- [ ] Q1 (research idea) refuses vague answers
+- [ ] Q2 (career stage), Q3 (prelim data), Q4 (environment), Q5 (posture) all forcing choices
 - [ ] All 5 Consensus search facets documented with query templates
 - [ ] RePORTER `curl` POST examples included with dynamic fiscal year window
 - [ ] Plan-tier detection logic explicit
