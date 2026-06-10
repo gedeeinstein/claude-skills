@@ -24,7 +24,7 @@ agents:
 
 ### Claude Code
 ```
-/read business-growth/customer-success-manager/SKILL.md
+/read business-growth/skills/customer-success-manager/SKILL.md
 ```
 
 ### Codex CLI
@@ -46,8 +46,8 @@ npx agent-skills-cli add alirezarezvani/claude-skills/business-growth
 9 scripts, all stdlib-only:
 
 ```bash
-python3 customer-success-manager/scripts/health_score_calculator.py --help
-python3 revenue-operations/scripts/pipeline_analyzer.py --help
+python3 business-growth/skills/customer-success-manager/scripts/health_score_calculator.py --help
+python3 business-growth/skills/revenue-operations/scripts/pipeline_analyzer.py --help
 ```
 
 ## Rules

@@ -22,4 +22,4 @@ Create a sprint plan with prioritized stories and capacity guardrails.
 - Story-level acceptance criteria checks
 
 ## Skill Reference
-- `product-team/agile-product-owner/SKILL.md`
+- `product-team/agile-product-owner/skills/agile-product-owner/SKILL.md`

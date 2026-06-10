@@ -396,7 +396,6 @@ echo "- Process improvements identified"
 
 - [cs-ceo-advisor](cs-ceo-advisor.md) - Strategic leadership and organizational development (CEO counterpart)
 - [cs-fullstack-engineer](../engineering/cs-fullstack-engineer.md) - Fullstack development coordination (planned)
-- [cs-devops-specialist](../engineering/cs-devops-specialist.md) - DevOps and infrastructure automation (planned)
 
 ## References
 

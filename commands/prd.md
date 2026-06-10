@@ -22,4 +22,4 @@ Generate a concise product requirements document for a feature, initiative, or p
 - Scope and timeline assumptions
 
 ## Skill Reference
-- `product-team/product-manager-toolkit/SKILL.md`
+- `product-team/skills/product-manager-toolkit/SKILL.md`

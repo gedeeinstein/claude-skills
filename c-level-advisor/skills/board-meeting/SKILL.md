@@ -81,7 +81,7 @@ Checklist:
 ---
 
 ### PHASE 4: Synthesis
-Chief of Staff delivers using the **Board Meeting Output** format (defined in `agent-protocol/SKILL.md`):
+Chief of Staff delivers using the **Board Meeting Output** format (defined in `../agent-protocol/SKILL.md`):
 - Decision Required (one sentence)
 - Perspectives (one line per contributing role)
 - Where They Agree / Where They Disagree

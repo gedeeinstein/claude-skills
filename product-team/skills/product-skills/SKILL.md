@@ -25,7 +25,7 @@ agents:
 
 ### Claude Code
 ```
-/read product-team/product-manager-toolkit/SKILL.md
+/read product-team/skills/product-manager-toolkit/SKILL.md
 ```
 
 ### Codex CLI
@@ -51,8 +51,8 @@ npx agent-skills-cli add alirezarezvani/claude-skills/product-team
 9 scripts, all stdlib-only:
 
 ```bash
-python3 product-manager-toolkit/scripts/rice_prioritizer.py --help
-python3 product-strategist/scripts/okr_cascade_generator.py --help
+python3 ../product-manager-toolkit/scripts/rice_prioritizer.py --help
+python3 ../product-strategist/scripts/okr_cascade_generator.py --help
 ```
 
 ## Rules

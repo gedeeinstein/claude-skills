@@ -266,7 +266,7 @@ Recommendations:
 #!/bin/bash
 # .git/hooks/pre-commit
 echo "Running skill validation..."
-python engineering/skill-tester/scripts/skill_validator.py engineering/new-skill --tier STANDARD
+python engineering/skills/skill-tester/scripts/skill_validator.py engineering/new-skill --tier STANDARD
 if [ $? -ne 0 ]; then
     echo "Skill validation failed. Commit blocked."
     exit 1
@@ -295,9 +295,9 @@ jobs:
           changed_skills=$(git diff --name-only ${{ github.event.before }} | grep -E '^engineering/[^/]+/' | cut -d'/' -f1-2 | sort -u)
           for skill in $changed_skills; do
             echo "Validating $skill..."
-            python engineering/skill-tester/scripts/skill_validator.py $skill --json
-            python engineering/skill-tester/scripts/script_tester.py $skill
-            python engineering/skill-tester/scripts/quality_scorer.py $skill --minimum-score 75
+            python engineering/skills/skill-tester/scripts/skill_validator.py $skill --json
+            python engineering/skills/skill-tester/scripts/script_tester.py $skill
+            python engineering/skills/skill-tester/scripts/quality_scorer.py $skill --minimum-score 75
           done
 ```
 
@@ -307,12 +307,11 @@ jobs:
 # Daily quality report generation
 echo "Generating daily skill quality report..."
 timestamp=$(date +"%Y-%m-%d")
-python engineering/skill-tester/scripts/quality_scorer.py engineering/ \
+python engineering/skills/skill-tester/scripts/quality_scorer.py engineering/ \
   --batch --json > "reports/quality_report_${timestamp}.json"
 
-echo "Quality trends analysis..."
-python engineering/skill-tester/scripts/trend_analyzer.py reports/ \
-  --days 30 > "reports/quality_trends_${timestamp}.md"
+echo "Quality trends: most recent daily reports for comparison..."
+ls -1t reports/quality_report_*.json | head -30
 ```
 
 ## Performance & Scalability

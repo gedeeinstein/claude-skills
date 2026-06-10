@@ -151,7 +151,7 @@ At session start: if a review date has passed, flag it: *"You decided [X] on [da
 ## Quality Standards
 
 Before delivering ANY output to the founder:
-- [ ] Follows User Communication Standard (see `agent-protocol/SKILL.md`)
+- [ ] Follows User Communication Standard (see `../agent-protocol/SKILL.md`)
 - [ ] Bottom line is first — no preamble, no process narration
 - [ ] Company context loaded (not generic advice)
 - [ ] Every finding has WHAT + WHY + HOW

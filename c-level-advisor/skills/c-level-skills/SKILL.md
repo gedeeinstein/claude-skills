@@ -149,5 +149,5 @@ Culture Architect, Company OS, Founder Coach, Strategic Alignment, Change Manage
 ## See Also
 
 - `CLAUDE.md` — full architecture diagram and integration guide
-- `agent-protocol/SKILL.md` — communication standard and quality loop details
-- `chief-of-staff/SKILL.md` — routing matrix for all 28 skills
+- `../agent-protocol/SKILL.md` — communication standard and quality loop details
+- `../chief-of-staff/SKILL.md` — routing matrix for all 28 skills

@@ -19,7 +19,7 @@ Spawn N subagents that work on the same task in parallel, each in an isolated gi
 
 ## Templates
 
-When `--template <name>` is provided, use the dispatch prompt from `references/agent-templates.md` instead of the default prompt below. Available templates:
+When `--template <name>` is provided, use the dispatch prompt from `../agenthub/references/agent-templates.md` instead of the default prompt below. Available templates:
 
 | Template | Pattern | Use Case |
 |----------|---------|----------|

@@ -66,7 +66,7 @@ If no `--eval` was provided, skip this step.
 
 Run `/hub:spawn` with the session ID.
 
-If `--template` was provided, use the template dispatch prompt from `references/agent-templates.md` instead of the default dispatch prompt. Pass the eval command, metric, and baseline to the template variables.
+If `--template` was provided, use the template dispatch prompt from `../agenthub/references/agent-templates.md` instead of the default dispatch prompt. Pass the eval command, metric, and baseline to the template variables.
 
 Launch all agents in a single message with multiple Agent tool calls (true parallelism).
 

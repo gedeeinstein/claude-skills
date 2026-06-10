@@ -37,7 +37,7 @@ The JTBD-driven builder cuts the roadmap in half. Six questions to surface what 
 ### 4. RICE Score
 **Reach, Impact, Confidence, Effort — what's the score and where does this rank in the queue?**
 ```bash
-python ../../../../product-team/product-manager-toolkit/scripts/rice_prioritizer.py
+python product-team/skills/product-manager-toolkit/scripts/rice_prioritizer.py
 ```
 
 ### 5. Opportunity Cost
@@ -103,7 +103,7 @@ python ../../../../product-team/product-manager-toolkit/scripts/rice_prioritizer
 
 - Agent: [`cs-cpo-advisor`](../../agents/cs-cpo-advisor.md)
 - Skill: [`cpo-advisor`](../../../skills/cpo-advisor/SKILL.md)
-- Execution: `../../../../product-team/product-manager-toolkit/`
+- Execution: `product-team/skills/product-manager-toolkit/`
 
 ---
 
