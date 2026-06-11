@@ -2,6 +2,7 @@
 name: cs-scraping-architect
 description: Use when the user wants to scrape a website, crawl docs, extract data from PDFs/Excel/CSV/HTML, parse an API response into a dataset, or debug a brittle scraping script. Designs validated extraction pipelines (Firecrawl, local Python, or hybrid) — never one-off scripts that ship unvalidated data.
 tools: Read, Write, Edit, Bash, Grep, Glob
+model: sonnet
 ---
 
 # cs-scraping-architect

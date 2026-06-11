@@ -97,7 +97,12 @@ def smoke_one(rel_path):
 def main(argv=None):
     parser = argparse.ArgumentParser(
         description="Run `python3 <file> --help` on every .py in the "
-                    "canonical tree and assert exit 0 (gate G8).")
+                    "canonical tree and assert exit 0 (gate G8).",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="Exit codes:\n"
+               "  0  all scripts passed --help, no stale exceptions\n"
+               "  1  one or more scripts failed the --help smoke test\n"
+               "  3  smoke_exceptions.txt lists files that no longer exist")
     parser.add_argument("--json", action="store_true",
                         help="emit a JSON report instead of human-readable output")
     parser.add_argument("--jobs", type=int, default=os.cpu_count() or 4,

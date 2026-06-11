@@ -100,4 +100,13 @@ def main():
     print("Blended Target: <$300")
 
 if __name__ == "__main__":
+    import argparse
+    parser = argparse.ArgumentParser(
+        description="Calculate blended and channel-specific CAC.",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="Current limitation: channel data is the `example_data` list in "
+               "main() — edit it with your spend/customer numbers, then run with "
+               "no args. CLI input (--file <json> / stdin) is a planned "
+               "enhancement; until then this tool is not scriptable.")
+    parser.parse_args()
     main()
