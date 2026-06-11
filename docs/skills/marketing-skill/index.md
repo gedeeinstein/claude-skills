@@ -1,13 +1,13 @@
 ---
 title: "Marketing Skills — Agent Skills & Codex Plugins"
-description: "47 marketing skills — marketing agent skill and Claude Code plugin for content, SEO, CRO, and growth. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
+description: "48 marketing skills — marketing agent skill and Claude Code plugin for content, SEO, CRO, and growth. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
 ---
 
 <div class="domain-header" markdown>
 
 # :material-bullhorn-outline: Marketing
 
-<p class="domain-count">47 skills in this domain</p>
+<p class="domain-count">48 skills in this domain</p>
 
 </div>
 
@@ -292,5 +292,11 @@ description: "47 marketing skills — marketing agent skill and Claude Code plug
     ---
 
     X-specific growth skill. For general social media content across platforms, see social-content. For social strategy a...
+
+-   **[youtube-full — YouTube Transcripts, Search, and Channel Data](youtube-full.md)**
+
+    ---
+
+    Covers transcript extraction, video search, channel browsing, in-channel search, playlist extraction, and new-upload ...
 
 </div>

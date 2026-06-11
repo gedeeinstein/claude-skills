@@ -26,6 +26,7 @@ DOMAINS = {
     "commercial": ("Commercial", 14, ":material-handshake-outline:", "commercial-skills"),
     "research-ops": ("Research Operations", 15, ":material-flask-outline:", "research-ops-skills"),
     "compliance-os": ("Compliance OS", 16, ":material-shield-lock-outline:", "compliance-os"),
+    "markdown-html": ("Markdown to HTML", 17, ":material-language-html5:", "markdown-html-skills"),
 }
 
 # Skills to skip (nested assets, samples, etc.)
@@ -217,6 +218,11 @@ DOMAIN_SEO_CONTEXT = {
     "productivity": "personal productivity agent skill and Claude Code plugin for brain-dump capture, email triage, and reflection",
     "marketing": "landing-page generator agent skill and Claude Code plugin for single-file HTML output with 4 design styles",
     "research": "research orchestrator agent skill and Claude Code plugin for hybrid routing across pulse, litreview, grants, dossier, patent, syllabus, and notebooklm specialists",
+    "business-operations": "business operations agent skill and Claude Code plugin for process mapping, vendor management, capacity planning, and internal comms",
+    "commercial": "commercial agent skill and Claude Code plugin for pricing strategy, deal desk, partnerships, and RFP response",
+    "research-ops": "enterprise research operations agent skill and Claude Code plugin for clinical study design, R&D finance, market sizing, and product research",
+    "compliance-os": "compliance readiness agent skill and Claude Code plugin for ISO 13485, ISO 27001, SOC 2, GDPR, FDA QSR, and EU AI Act audit prep",
+    "markdown-html": "markdown-to-HTML converter agent skill and Claude Code plugin for single-file interactive documents, code reviews, and slide decks",
 }
 
 
@@ -261,6 +267,14 @@ def rewrite_skill_internal_links(content, skill_rel_path):
         if (target.startswith(internal_prefixes) or target == "README.md"
                 or target.endswith((".py", ".json", ".yaml", ".yml", ".sh"))):
             github_url = f"{GITHUB_BASE}/{skill_rel_path}/{target}"
+            return f"[{text}]({github_url})"
+        # Explicit ./ links and ALL-CAPS companion files (CONTEXT-FORMAT.md,
+        # ADR-FORMAT.md, REFERENCE.md) are skill-folder siblings, not docs pages.
+        bare = target[2:] if target.startswith("./") else target
+        stem = bare.split("/")[0].split("#")[0].rsplit(".", 1)[0]
+        if target.startswith("./") or (bare.endswith(".md") and "/" not in bare
+                                       and stem and stem == stem.upper()):
+            github_url = f"{GITHUB_BASE}/{skill_rel_path}/{bare}"
             return f"[{text}]({github_url})"
         return match.group(0)
 

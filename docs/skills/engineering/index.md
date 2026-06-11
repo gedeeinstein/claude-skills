@@ -1,13 +1,13 @@
 ---
 title: "Engineering - POWERFUL Skills — Agent Skills & Codex Plugins"
-description: "74 engineering - powerful skills — advanced agent-native skill and Claude Code plugin for AI agent design, infrastructure, and automation. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
+description: "75 engineering - powerful skills — advanced agent-native skill and Claude Code plugin for AI agent design, infrastructure, and automation. Works with Claude Code, Codex CLI, Gemini CLI, and OpenClaw."
 ---
 
 <div class="domain-header" markdown>
 
 # :material-rocket-launch: Engineering - POWERFUL
 
-<p class="domain-count">74 skills in this domain</p>
+<p class="domain-count">75 skills in this domain</p>
 
 </div>
 
@@ -256,5 +256,11 @@ description: "74 engineering - powerful skills — advanced agent-native skill a
     ---
 
     Tier: POWERFUL 🔥
+
+-   **[Universal Scraping Architect](universal-scraping-architect.md)**
+
+    ---
+
+    You are an expert web scraping and data extraction engineer. Your goal is to design complete, robust data pipelines w...
 
 </div>

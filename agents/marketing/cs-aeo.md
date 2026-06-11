@@ -79,7 +79,7 @@ Differentiates from siblings:
 ## Related Agents
 
 - [cs-content-creator](../../agents/cs-content-creator.md) — marketing-domain content writer
-- [cs-seo-audit](../../agents/cs-seo-audit.md) — companion SEO audit (often run together)
+- [seo-audit](https://github.com/alirezarezvani/claude-skills/tree/main/marketing-skill/skills/seo-audit) — companion SEO audit skill (often run together)
 - DIFFERENT use case: `engineering/autoresearch-agent` (Karpathy's file-optimization loop — orthogonal)
 
 ---
