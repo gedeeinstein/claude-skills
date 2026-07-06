@@ -1,14 +1,14 @@
 ---
 type: Problem-Solution
-title: Problem & Solution — Café Aurora
-description: The concrete pain Café Aurora solves and how it solves it
-tags: [fundacao, problema-solucao]
+title: Problem & Solution — Aurora Café
+description: The concrete pain Aurora Café solves and how it solves it
+tags: [foundation, problem-solution]
 timestamp: 2026-06-19T10:00:00Z
 status: draft
 version: 0.1
 ---
 
-# Problem & Solution — Café Aurora
+# Problem & Solution — Aurora Café
 
 ## Problem
 
